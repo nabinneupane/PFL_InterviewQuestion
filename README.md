@@ -25,6 +25,6 @@ Second assignment: API request test
 
   To run :
     this file make sure you have installed requests library i.e. pip install requests 
-     then run python3 simrequest. 
+     then run python3 simrequest.py
 
 
