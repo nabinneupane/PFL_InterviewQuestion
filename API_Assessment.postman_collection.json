@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "baf875c2-e9b0-4b81-aa31-f4aece3887d4",
+		"name": "API Assessment",
+		"description": "Provides acess token request as well as required headers for authenticating against the PFL product endpoint.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Access Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6cc183a5-7732-4574-9576-3334b985ff39",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "a5f2b232-cd18-4a46-be6d-cf4c9d42e5cf",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "7zg1SZ*o0@qq6ERn:tUqY=5rWGCXW5V3",
+							"type": "text"
+						},
+						{
+							"key": "resource",
+							"value": "https://pfl.pfllink.appportal.api",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Request12345",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "apitest@pfllinkappcenterdev.onmicrosoft.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://login.microsoftonline.com/pfllinkappcenterdev.onmicrosoft.com/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"login",
+						"microsoftonline",
+						"com"
+					],
+					"path": [
+						"pfllinkappcenterdev.onmicrosoft.com",
+						"oauth2",
+						"token"
+					]
+				},
+				"description": "Authenticate as a normal store user. The OAuth token is used to authenticate subsequent tests."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {use access token here}"
+					},
+					{
+						"key": "ocp-apim-subscription-key",
+						"value": "e67a9b008f554bb380c39a499a3a60a8"
+					}
+				],
+				"url": {
+					"raw": "https://pfllink-api-generic-staging.azurewebsites.net/api/v1/store/{storeID}/product/{productId}",
+					"protocol": "https",
+					"host": [
+						"pfllink-api-generic-staging",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"store",
+						"{storeID}",
+						"product",
+						"{productId}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "01cfd2fb-97a4-4257-a8e7-ab69291b9efc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "56498e66-01d8-49a4-b802-a67bef62075d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
